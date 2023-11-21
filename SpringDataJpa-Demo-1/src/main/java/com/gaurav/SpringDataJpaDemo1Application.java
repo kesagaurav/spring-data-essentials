@@ -4,8 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import com.gaurav.dto.HeroDto;
+import com.gaurav.model.Hero;
 import com.gaurav.repository.HeroRepository;
 import com.gaurav.service.HeroService;
 
@@ -68,10 +73,23 @@ public class SpringDataJpaDemo1Application implements CommandLineRunner {
 		
 		//service.updateByColorAndName("red", "hydra",3);
 		
-		service.updateByColorAndNameAndWeapon("black", "nick-fury", "stG44", 12);
+		//service.updateByColorAndNameAndWeapon("black", "nick-fury", "stG44", 12);
 
+		//pageable
+		
+		long count=repo.count();
+		for(int i=0;i<=count;i++) {
+			Pageable page=PageRequest.of(i, 2);
+			System.out.println("-------------");
+			Page<Hero> p=service.findAll(page);
+			for(Hero h:p) {
+				System.out.println(h);
+			}
+		}
 
-
+		System.out.println("sorted counts");
+		Iterable<Hero> hero=service.findAll(Sort.by(Sort.Direction.DESC, "name"));
+		hero.forEach(e->System.out.println(e));
 
 	}
 

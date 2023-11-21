@@ -5,6 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.gaurav.dto.HeroDto;
@@ -94,6 +97,18 @@ public class HeroServiceImpl implements HeroService {
 		repo.updateByColorAndNameAndWeapon(color, name, weapon, id);
 		System.out.println("rows affetcted " + repo.count());
 
+	}
+
+	@Override
+	public Page<Hero> findAll(Pageable page) {
+		// TODO Auto-generated method stub
+		return repo.findAll(page);
+	}
+
+	@Override
+	public Iterable<Hero> findAll(Sort sort) {
+		// TODO Auto-generated method stub
+		return repo.findAll(sort);
 	}
 
 	
