@@ -1,0 +1,10 @@
+package com.gaurav.service;
+
+import com.gaurav.model.Hero;
+
+public interface HeroService {
+
+	public Hero addHero();
+	public void update();
+	public void delete();
+}

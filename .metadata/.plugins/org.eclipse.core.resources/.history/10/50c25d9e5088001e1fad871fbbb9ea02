@@ -1,0 +1,34 @@
+package com.gaurav.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.gaurav.dto.HeroDto;
+import com.gaurav.model.Hero;
+import com.gaurav.service.HeroService;
+
+@Service
+public class HeroServiceImpl implements HeroService {
+
+	@Override
+	public Hero addHero(HeroDto dto) {
+		// TODO Auto-generated method stub
+		Hero hero=new Hero();
+		hero.setName(dto.getName());
+		hero.setColor(dto.getColor());
+		hero.setWeapon(dto.getWeapon());
+		return hero;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

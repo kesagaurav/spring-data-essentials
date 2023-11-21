@@ -1,0 +1,32 @@
+package com.gaurav.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.gaurav.model.Hero;
+
+public interface HeroRepository extends JpaRepository<Hero, Integer> {
+	
+	
+	public List<Hero> findByName(String name);
+	@Query("from Hero where weapon=:weapon")
+	public List<Hero> findByWeapons(@Param("weapon") String weapons);
+	@Query("select h from Hero h where h.color=?1")
+	public List<Hero> findByColor(String color);
+	@Modifying
+	@Query("delete Hero where name=:name")
+	public void deleteByName(String name);
+	@Modifying
+	@Query("update Hero h set h.weapon=?1 where h.id=?2")
+	public void updateByWeapon(String weapons,int id);
+	
+	
+	@Modifying
+	@Query("update Hero h set h.color=?1 , h.name?=2 where h.id=?3")
+	public void updateByColorAndName(String color,int id,String name);
+
+}

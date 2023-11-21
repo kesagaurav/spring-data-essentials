@@ -1,0 +1,7 @@
+package com.gaurav.dto;
+
+public class HeroDto {
+	private String name;
+	private String color;
+	private String weapon;
+}

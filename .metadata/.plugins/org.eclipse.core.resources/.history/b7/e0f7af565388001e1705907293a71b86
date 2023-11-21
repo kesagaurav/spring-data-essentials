@@ -1,0 +1,11 @@
+package com.gaurav.service;
+
+import com.gaurav.dto.HeroDto;
+import com.gaurav.model.Hero;
+
+public interface HeroService {
+
+	public Hero addHero(HeroDto dto);
+	public void update(Hero hero);
+	public void delete(int id);
+}

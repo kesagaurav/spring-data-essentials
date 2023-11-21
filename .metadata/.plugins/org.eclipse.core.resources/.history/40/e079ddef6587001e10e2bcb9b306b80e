@@ -1,0 +1,15 @@
+package com.gaurav.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="products")
+public class Product {
+	
+	private Integer pid;
+	private String prodName;
+	private Integer price;
+	private Integer quantity;
+
+}

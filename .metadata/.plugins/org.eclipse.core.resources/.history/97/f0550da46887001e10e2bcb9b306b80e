@@ -1,0 +1,8 @@
+package com.gaurav.dto;
+
+public class ProductDTO {
+	private Integer pid;
+	private String prodName;
+	private Integer price;
+	private Integer quantity;
+}

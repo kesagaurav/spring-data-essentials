@@ -1,0 +1,39 @@
+package com.gaurav.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gaurav.dto.HeroDto;
+import com.gaurav.model.Hero;
+import com.gaurav.repository.HeroRepository;
+import com.gaurav.service.HeroService;
+
+@Service
+public class HeroServiceImpl implements HeroService {
+	@Autowired
+	private HeroRepository repo;
+	@Override
+	public Hero addHero(HeroDto dto) {
+		// TODO Auto-generated method stub
+		Hero hero=new Hero();
+		hero.setName(dto.getName());
+		hero.setColor(dto.getColor());
+		hero.setWeapon(dto.getWeapon());
+		return repo.save(hero);
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		repo.deleteById(id);
+		System.out.println("deleted the records " + repo.count());
+		
+	}
+
+}

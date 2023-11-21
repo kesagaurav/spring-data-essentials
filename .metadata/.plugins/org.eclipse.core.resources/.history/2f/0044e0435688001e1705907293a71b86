@@ -1,0 +1,20 @@
+package com.gaurav.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.gaurav.model.Hero;
+
+public interface HeroRepository extends JpaRepository<Hero, Integer> {
+	
+	
+	public List<Hero> findByName(String name);
+	@Query("from Hero where weapon=:weapon")
+	public List<Hero> findByWeapons(@Param("weapon") String weapons);
+	@Query("select h from Hero where color=?")
+	public List<Hero> findByColor(String color);
+
+}

@@ -1,0 +1,21 @@
+package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gaurav.dto.ProductDTO;
+import com.gaurav.model.Product;
+import com.gaurav.repository.ProductRepository;
+
+@Service
+public class ProductService {
+	@Autowired
+	private ProductRepository repo;
+	
+	public void addProduct(ProductDTO dto) {
+		Product p=new Product();
+		p.setPrice(dto.getPrice());
+		p.setProdName(dto.getProdName());
+		p.setQuantity(dto.getQuantity());
+	}
+}
